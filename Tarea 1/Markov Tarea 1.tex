@@ -58,11 +58,69 @@
 %\end{abstract}
 
 \begin{itemize}
-    \item[\textbf{1.}] 
-    \item[\textbf{2.}]
-    \item[\textbf{3.}]
-    \item[\textbf{4.}]
-    \item[\textbf{5.}]
+    \item[\textbf{1.}] Probar que la medida $\mu_0$, definida en el teorema de Daniell-Kolmogorov, es finita aditiva en los cilindros, i.e. en $\mathfrak{C}$ de acuerdo
+    a la notación del curso.
+    \item[\textbf{2.}] En la propiedad de Markov para el caso de cadenas de Markov, completar el argumento de clases monótonas.
+    
+    \item[\textbf{3.}] Probar que 
+    \[
+    \F_T=\left\{A\in\F \mid A\cap \{T=n\}\in \F_n \text{ para toda } n\in \N \right\}    
+    \]
+    es una $\sigma$-álgebra. Además, ver que $X_T\1_{\{T<\infty\}}$ es $\F_T$-medible.
+    \item[\textbf{4.}] \textbf{(Propiedad de Markov Fuerte)} Sea $T$ un tiempo de paro finito 
+    casi seguramente, i.e. $\P_x\left(T<\infty\right)=1$. Entonces bajo el evento $\{X_T=y\}$, la cadena trasladada 
+    $X\circ\Theta_T$ es independiente de $\F_T$ y tiene por ley $\P_y$.
+    \item[\textbf{5.}] \textbf{(Cambio de tiempo)} El objetivo de este ejercicio es el de 
+    realizar una transformación de cambio de tiempo a una cadena de Markov y ver que transforma 
+    a una cadena de Markov en otra cadena (con matriz de transición diferente).
+    \begin{enumerate}
+        \item Caminata aleatoria (continua por la izquierda): Sean $\Pi$ una medida de probabilidad
+        en $\{-1,0,1,2,...\}$ y $(\xi_n)_{n\geq1}$ una sucesión de v.a.i.i.d. con ley común $\Pi$. Para $x\in \Z$, 
+        vamos a denotar por $\P_x$ a la ley de $S=(S_n,n\geq0)$, donde 
+        \[
+            S_n=S_0+\sum_{j=1}^{n}\xi_j \quad n\geq1, \quad \text{ y } \quad \P_x(S_0=x)=1. 
+        \]
+        Además vamos a definir a $T_0:=\inf \left\{n\geq0 \mid S_n=0\right\}$. Probar que $T_0$ es un 
+        tiempo de paro.
+        \item Procesos de Galton-Watson: Sea $\gamma$ una medida de probabilidad en $\{0,1,...\}$, la cual 
+        llamaremos ley de reproducción (ley del número de hijos de un individuo). Para $x\in \N$, vamos a denotar por 
+        $\Q_x$ a la ley del proceso de Galton-Watson $Z=\left(Z_n,n\geq0\right)$ que empieza con $x$ individuos, 
+        donde 
+        \[
+        Z_0=x, \qquad \Q_x-c.s., \qquad Z_{n+1}=\sum_{j=1}^{Z_n}\alpha_{n,j},    
+        \]
+        y $\alpha_{n,j}$ es el número de hijos del $j$-ésimo individuo de la generación $n$. 
+        Vamos a suponer que $\{\alpha_{n,j},n\geq0,j\geq1\}$ son v.a.i.i.d. con ley común $\gamma$. Probar 
+        que $Z$ es una cadena de Markov con matriz de transición 
+        \[
+        Q(x,y)=\begin{cases}
+            1 & \text{si } x=y=0\\
+            0 & \text{si } x=0\neq y\\
+            \gamma^{*x}(y) & \text{en otro caso,}
+        \end{cases}    
+        \]
+        donde $\gamma^{*x}$ no es más que la convolución de $\gamma$, $x$-veces y representa la ley 
+        de $\alpha_{0,1}+...+\alpha_{0,n}$.
+        \item Supongamos que $x>0$. Vamos a definir de manera inductiva a $\tau_{n+1}:=\tau_{n}+S_{\tau_n}$ con 
+        $\tau_0=0$. Verificar que $\tau_n$ es un tiempo de paro en la filtración natural de $S$, que $\tau_n\leq T_0$ y 
+        que $\lim_{n\to \infty}\tau_n=T_0$.
+        \item Sea $Z_n:=S_{\tau_n}$ y $\Q_x$ la ley de $Z=(Z_n,n\geq0)$ bajo $\P_x$. Verificar 
+        que $\Q_x$ es la ley de un proceso de Galton-Watson y expresar a la ley de reproducción $\gamma$ en términos de $\Pi$. Además 
+        verificar que la población total $\sum_{n=0}^{\infty}X_n$, bajo $\Q_x$, tiene la misma 
+        ley que $T_0$ bajo $\P_x$.
+    \end{enumerate}
+    \item[\textbf{6.}] Probar que el único conjunto $\F$-medible contenido en $\mathcal{C}\left([0,\infty),\R^{d}\right)$ es el conjunto 
+    vacío y deducir que $\mathcal{C}\left([0,\infty),\R^d\right)$ no es $\F$-medible.
+    \item[\textbf{7.}] Sean $\widetilde{X}$ y $X$ dos procesos continuos casi seguramente. Probar que si 
+    $\widetilde{X}$ es una modificación de $X$, entonces $\widetilde{X}$ y $X$ son indistinguibles.
+    \item[\textbf{8.}] Probar que existe una única medida $\mathbb{W}$ en $\left(\mathcal{C}\left([0,\infty),\R^d\right),\B(\mathcal{C})\right)$,
+    donde $\B(\mathcal{C})$ es la $\sigma$-álgebra de Borel con la topología de los compactos-abiertos, tal que el proceso canónico $X=(X_t,t\geq0)$ 
+    definido por 
+    \[
+    X_t(\omega)=\omega(t), \qquad \text{ donde }\omega\in \mathcal{C}\left([0,\infty),\R^d\right),    
+    \]
+    es un movimiento browniano $d$-dimensional en $\left(\mathcal{C}\left([0,\infty),\R^d\right),\B(\mathcal{C}),\mathbb{W}\right)$.
+
 \end{itemize}
 
 \end{document}

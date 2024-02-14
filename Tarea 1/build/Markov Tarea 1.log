@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.12.22)  29 DEC 2023 00:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.12.22)  31 JAN 2024 15:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -564,9 +564,17 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 LaTeX Font Info:    Trying to load font information for U+bbold on input line 55.
  (C:\Users\irvin\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\ubbold.fd
 File: ubbold.fd 1996/01/01 Blackboard Bold Font Definition File (jk)
+)
+LaTeX Font Info:    Trying to load font information for U+euf on input line 61.
+ (C:\Users\irvin\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\ueuf.fd
+File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
+)
+LaTeX Font Info:    Trying to load font information for U+dsrom on input line 69.
+ (C:\Users\irvin\AppData\Local\Programs\MiKTeX\tex/latex/doublestroke\udsrom.fd
+File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
 ) [1
 
-{C:/Users/irvin/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] (c:\Users\irvin\Documents\Maestría\Semestre 4\Procesos de Markov\Tarea 1\build\Markov Tarea 1.aux
+{C:/Users/irvin/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2] (c:\Users\irvin\Documents\Maestría\Semestre 4\Procesos de Markov\Tarea 1\build\Markov Tarea 1.aux
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
 )
@@ -576,17 +584,17 @@ L3 programming layer <2023-12-08>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 16628 strings out of 474491
- 339783 string characters out of 5743833
- 1927473 words of memory out of 5000000
- 38610 multiletter control sequences out of 15000+600000
- 564673 words of font info for 63 fonts, out of 8000000 for 9000
+ 16707 strings out of 474491
+ 341116 string characters out of 5743833
+ 1941473 words of memory out of 5000000
+ 38672 multiletter control sequences out of 15000+600000
+ 568424 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 116i,7n,121p,554b,365s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/irvin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/irvin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/irvin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-Output written on "c:\Users\irvin\Documents\Maestría\Semestre 4\Procesos de Markov\Tarea 1\build\Markov Tarea 1.pdf" (1 page, 33639 bytes).
+ 116i,9n,121p,554b,365s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/irvin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/irvin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/irvin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/irvin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/irvin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/irvin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/irvin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/irvin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/irvin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/irvin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/irvin/AppData/Local/Programs/MiKTeX/fonts/type1/public/doublestroke/dsrom10.pfb><C:/Users/irvin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/euler/eufm10.pfb><C:/Users/irvin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on "c:\Users\irvin\Documents\Maestría\Semestre 4\Procesos de Markov\Tarea 1\build\Markov Tarea 1.pdf" (2 pages, 143109 bytes).
 PDF statistics:
- 24 PDF objects out of 1000 (max. 8388607)
+ 77 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
