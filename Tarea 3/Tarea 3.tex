@@ -1,0 +1,251 @@
+\documentclass[letterpaper]{article} 
+\usepackage[left = 0.5in, right = 0.5in, top = 0.9in, bottom = 0.9in]{geometry}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{tikz-cd}
+\usepackage{mathrsfs}
+\usepackage[bbgreekl]{mathbbol}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\graphicspath{{img/}}
+
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\G}{\mathcal{G}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\inv}{^{-1}}
+\renewcommand{\to}{\rightarrow}
+\newcommand{\ent}{\Longrightarrow}
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\1}{\mathds{1}}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\theoremstyle{definition}
+\newtheorem{dfn}{Definición}
+\theoremstyle{definition}
+\newtheorem{teo}{Teorema}
+\theoremstyle{definition}
+\newtheorem{cor}{Corolario}
+\theoremstyle{definition}
+\newtheorem{prop}{Proposición}
+\theoremstyle{definition}
+\newtheorem{obs}{Observación}
+
+
+\title{\textbf{}}
+\author{Iván Irving Rosas Domínguez}
+\date{\today}
+
+\DeclareSymbolFontAlphabet{\mathbbm}{bbold}
+\DeclareSymbolFontAlphabet{\mathbb}{AMSb}
+\DeclareMathSymbol\bbDelta  \mathord{bbold}{"01}
+
+\begin{document}
+\maketitle
+
+%\begin{abstract}
+%\end{abstract}
+
+\noindent\textbf{Ejercicio 15:} Sean $\tau$ un tiempo de paro con respecto a $(\F_t)_{t\geq0}$ y $X_t=\1_{[0,\tau)}(t)$. Probar que 
+    el proceso $(X_t,t\geq0)$ es adaptado a dicha filtración.
+    \begin{proof} Sea $t\geq0$ un real fijo. Buscamos que $X_t\in \F_t$. Recordamos que 
+      \[
+        \1_{[0,\tau(\omega))}(t)=\begin{cases}
+            1, & \text{ si } t< \tau(\omega),\\
+            0, & \text{ si } t\geq \tau(\omega).\\
+        \end{cases}
+      \] 
+    Sea $A\in \B(\R)$. Nótese que  
+    \[
+    X_t[A]^{-1}=\left\{\omega \in \Omega : X_t(\omega) \in A\right\}=\left\{\omega \in \Omega : \1_{[0,\tau(\omega))}(t)\in A\right\}. 
+    \]
+    Dado que la indicadora toma solo dos valores, tenemos cuatro casos:
+    \[
+        \left\{\omega \in \Omega : \1_{[0,\tau(\omega))}(t)\in A\right\}=\begin{cases}
+            \varnothing, & \text{ si } 0, 1\not \in A,\\
+            \Omega, & \text{ si } 0,1 \in A,\\
+            \{t<\tau\}, & \text{ si } 0\not\in A, 1 \in A,\\
+            \{t\geq\tau\}, & \text{ si } 0 \in A, 1\not \in A.\\
+        \end{cases}
+    \]
+    En cualquier caso, $X_t[A]^{-1}\in\F_t$, y por lo tanto $X_t\in \F_t$.
+     \end{proof}  
+\noindent \textbf{Ejercicio 16:} Sea $X=(X_t:t\geq0)$ un proceso estocástico adaptado a la filtración $(\F_t)_{t\geq0}$, con espacio de estados $(E,\mathcal{E})$, donde 
+$E$ es un espacio métrico. Además, consideremos $A\in \mathcal{E}$. Probar que 
+\begin{itemize}
+  \item Si $X$ es continuo por la derecha, $(\F_t)_{t\geq0}$ es continua por la derecha y $A$ es un conjunto abierto, entonces $T_A$ es un tiempo de paro con respecto a $(\F_t)_{t\geq0}$.
+  \item Si $X$ es continuo y $A$ es un conjunto cerrado, entonces $T_A$ es un tiempo de paro con respecto a $(\F_t)_{t\geq0}$.
+\end{itemize}
+\begin{proof} 
+  \begin{itemize}
+    \item Para el primer inciso, recordamos que para una filtración continua por derecha, es equivalente que una variable aleatoria $\tau$ sea tiempo de paro con respecto a dicha filtración, a que 
+    \[
+    \{\tau<t\}  \in \F_t, \qquad \forall t>0.
+    \]
+  Basta entonces con probar esta última propiedad para $T_A$. Sea $t>0$ y nótese que
+  \[
+  \{T_A<t\}=\{\inf\{s\geq0:X_s\in A\}<t\}=\{\exists \ 0\leq s<t,\text{ tal que } X_s\in A\}=\bigcup_{0\leq s<t}\{X_s\in A\}.
+  \]
+  Buscamos ver que la última unión se puede realizar sobre los reales $s\in [0,t)$ que sean solamente racionales. Es claro que 
+  \[
+    \bigcup_{0\leq s<t}\{X_s\in A\}\supseteq\bigcup_{0\leq s<t,s\in \Q}\{X_s\in A\}.  
+  \]
+  Y notemos que si tomamos un elemento $\omega \in \bigcup_{0\leq s<t}\{X_s\in A\}$, existe real positivo $s<t$, tal que $X_s(\omega)\in A$. Ahora, como $X$ es continuo por derecha, para el abierto $A$ y el punto $s$, existe $\delta>0$ tal que 
+  \[
+  X(\omega)[[s,s+\delta)]\subseteq E.    
+  \] 
+
+  Dado que $\delta>0$, el conjunto $[s,s+\delta)$ no es vacío. Más aún, podemos tomar $r=\min\{s+\delta,t\}$, el cual seguirá siendo no vacío y por lo tanto contiene
+  un racional $q$. En particular $X_q(\omega)\in E$.\\ 
+  
+  Se sigue entonces que $\omega\in \{X_q\in A\}$, con $q\in [s,r)\subseteq[0,t)$ y $q\in \Q$. Por lo tanto, 
+
+  \[
+  \omega \in \bigcup_{0\leq s<t,s\in \Q}\{X_s\in A\}
+  \]
+  Dado que esta última unión es una unión numerable de conjuntos medibles (ya que $(X_t)_{t\geq0}$ es adaptado a $(\F_t)_{t\geq0})$, es en sí mismo un medible, y concluimos.
+  \item Para toda $t\geq0$, podemos reescribir el evento $\{T_F\leq t\}$ como sigue:
+  \[
+  \{T_F\leq t\}=\left\{ \ \inf\{s\geq0 : X_s\in F\}\leq t\right\}=\left\{\inf_{0\leq s\leq t} d(X_s,F)=0\right\}.
+  \]
+  La contención de izquierda a derecha es sencilla de ver. Para la contención inversa, si suponemos que el ínfimo de las distancias entre $X_s$ y el conjunto $F$ es 0 a lo largo de todo el intervalo $[0,t]$, dado que el conjunto $F$ es cerrado y $(X_t)_{\geq0}$ es continuo, la función distancia $d(X_s,F)$ es continua sobre $[0,t]$, por lo que el ínfimo en realidad es un mínimo.\\
+
+  Esto nos dice que existe un punto $s\in[0,t]$ en el cual $X_s$ toca al conjunto $F$. De aquí se sigue que el primer tiempo de llegada a $F$ debe ocurrir antes, o a lo más, en $t$, esto es, $T_F\leq t$.\\
+
+  Finalmente, tenemos la siguiente igualdad,
+  \[
+    \left\{\inf_{0\leq s\leq t} d(X_s,F)=0\right\}=\left\{\inf_{s\in [0,t]\cap \Q} d(X_s,F)=0\right\}.
+  \]
+  Esto se da gracias a la continuidad del proceso $X$.\\
+
+  Finalmente, por definición de ínfimo, se tiene la siguiente igualdad:\
+  \[
+    \left\{\inf_{s\in [0,t]\cap \Q} d(X_s,F)=0\right\}=\bigcap_{n\geq1}\bigcup_{s\in[0,t]\cap\Q}\{d(X_s,F)<\frac{1}{n}\}
+    \]
+    Y estos últimos son conjuntos medibles, por lo que concluimos.
+  %Dado que la función distancia es continua pues $X$ es continuo y $F$ es cerrado, es medible, y dado que tomar ínfimos preseva la medibilidad, este último conjunto es medible.
+  \end{itemize} 
+ \end{proof}
+ \noindent \textbf{Ejercicio 20:} Sea $F$ no aritmética en $\R$. Probar que toda función continua y acotada $f$ que verifica 
+ \[
+ \int f(x+y)dF(y)=f(x), \qquad \forall x \in \R.
+ \]
+ es constante.
+ \begin{proof} 
+   Hacemos la prueba en 4 pasos. Para ello, definimos las siguientes funciones auxiliares: 
+   \[
+   H_0(x):=\int \left(f(x+y)-f(x)\right)^2dF(y), \qquad H_n(x):=\int H_0(x+y)dF^{*n}(y) \quad \text{y} \quad S_n(x):=\sum_{k=0}^{n}H_k(x).
+   \]
+   Por otro lado, notamos las siguientes igualdades. Sea $g_k(x)=\E\left[f \left(x+\sum_{k=1}^{n}\xi_{k}\right)\right]$. Entonces, por ejemplo para el caso $k=2$, se tiene que
+   \[
+   g_2(x)=\E\left[f(x+\xi_1+\xi_2)\right]\int_\R \E\left[f(x+y+\xi_1)\right]dF(y)=\int_\R \left(\int_\R f(x+y+z)dF(z)\right)dF(y)
+   \]
+   y además, por simetría, que 
+   \[
+   g_2(x)=\E\left[f(x+\xi_1+\xi_2)\right]\int_\R \E\left[f(x+\xi_1+z)\right]dF(z)=\int_\R \left(\int_\R f(x+y+z)dF(y)\right)dF(z).
+   \]
+   Más aún, notemos que si $Z:=\xi_1+\xi_2$, entonces $dF_Z=dF_{\xi_1+\xi_2}=dF^{*2}$, por lo que
+   \[
+   g_2(x)=\E\left[x+\xi_1+\xi_2\right]=\E\left[x+Z\right]=\int_\R f(x+y)dF^{*2}(y).
+   \]
+   Se sigue entonces la siguiente cadena de igualdades:
+   \[
+    g_2(x)=\int_\R \left(\int_\R f(x+y+z)dF(z)\right)dF(y)=\int_\R \left(\int_\R f(x+y+z)dF(y)\right)dF(z)=\int_\R f(x+y)dF^{*2}(y).
+    \]
+    En general, para $k\geq1$, 
+    \[
+      g_{k+1}f(x)=\E\left[f(x+\xi_1+...+\xi_{k+1})\right]=\E\left[f \left(x+\sum_{j=1}^{k+1}\xi_j\right)\right]=\int_\R f(x+y)dF^{*(k+1)}(y)=\int_\R \left(\int_\R f(x+y+z)dF^{*k}(y)\right)dF(z)=\int_\R \left(\int_\R f(x+y+z)dF^{*k}(y)\right)dF(z)
+    \]
+   \begin{enumerate}
+    \item[\textbf{Parte 1}] Demostraremos que $S_n(x)\leq \|f\|_\infty^2$, para cualquier $x\in \R$. En efecto, aseguramos que se cumple lo siguiente $$\forall n\geq0, \qquad  H_{n+1}(x)=\int H_n(x+w)dF(w).$$
+    Sea $n\geq0$. Observemos las siguientes igualdades obtenidas gracias al uso repetido del teorema de Tonelli.
+    \begin{align*}
+      H_{n+1}(x)=\int_\R H_0(x+y)dF^{*(n+1)}(y)&= \int_\R \left(\int_\R (f(x+y+z)-f(x+y))^2dF(z)\right)dF^{*(n+1)}(y)\\
+      &=\int_\R \left(\int_\R (f(x+y+z)-f(x+y))^2dF^{*(n+1)}(y)\right)dF(z)\\
+      &=\int_\R \left(\int_\R \left(\int_\R(f(x+y+z+w)-f(x+y+w))^2dF(w)\right)dF^{*n}(y)\right)dF(z)\\
+      &=\int_\R \left(\int_\R \left(\int_\R(f(x+y+z+w)-f(x+y+w))^2dF(z)\right)dF^{*n}(y)\right)dF(w)\\
+      &=\int_\R \left(\int_\R H_0(x+y+w)dF^{*n}(y)\right)dF(w)\\
+      &=\int_\R H_n(x+w)dF(w),\\
+    \end{align*}
+    justo como queríamos. Una vez teniendo la identidad anterior, aseguramos que para cualquier $n\geq1$, $$H_n(x)=\int_\R f^2(x+y)dF^{*(n+1)}(y)-\int_\R f^2(x+y)dF^{*n}(y).$$
+    En efecto, procediendo por inducción, para $n\geq1$ se tiene que 
+    \begin{align*}
+      H_1(x)=\int_\R H_0(x+y)dF(y)&=\int_\R \left(\int_\R \left(f(x+y+z)-f(x+y)\right)^2 dF(z)\right)dF(y)\\
+      &=\int_\R \left(\int_\R f^2(x+y+z)-2f(x+y+z)f(x+y)+f^2(x+y) dF(z)\right)dF(y)\\
+      &=\int_\R \left(\int_\R f^2(x+y+z)dF(z)\right)-2f(x+y)\left(\int_\R f(x+y+z)dF(z)\right)+f^2(x+y)dF(y)\\
+      &=\int_\R \left(\int_\R f^2(x+y+z)dF(z)\right)dF(y)-2f^2(x+y)+f^2(x+y)dF(y)\\
+      &=\int_\R f^2(x+y)dF^{*2}(y)-\int_\R f^2(x+y)dF(y).\\
+    \end{align*}
+    Suponemos ahora que el resultado es válido para $n\geq1$ y notamos que para $n+1$, 
+    \begin{align*}
+      H_{n+1}(x)=\int_\R H_n(x+y)dF(y)&=\int_\R \left(\int_\R f^2(x+y+z)dF^{*(n+1)}(z)-\int_\R f^2(x+y+z)dF^{*n}(z)\right)dF(y)\\
+      &=\int_\R f^2(x+y+z)dF^{*(n+1)}(y)dF(z)-\int_\R f^2(x+y+z)dF^{*n}(y)dF(z)\\
+      &=\int_\R f^2(x+y)dF^{*(n+2)}(y)-\int_\R f^2(x+y+z)dF^{*(n+1)}(y),\\
+    \end{align*}
+    como queríamos. Una vez que tenemos esto, notamos que para cualquier $n\geq0$, $S_n(x)$ es una suma telescópica, y por lo tanto, para cualquier $x\in \R$,
+    \begin{align*}
+      S_n(x)=\sum_{k=0}^{n}H_n(x)&=\sum_{k=0}^{n}\left(\int_\R f^2(x+y)dF^{*(k+1)}(y)-\int_\R f^2(x+y)dF^{*k}(y)\right)\\
+      &=\int_\R f^{2}(x+y)dF^{*(n+1)}(y)-\int_\R f^{2}(x+y)dF^{*0}(y)\\
+      &= \int_\R f^{2}(x+y)dF^{*(n+1)}(y)-f^{2}(x)\\
+      &\leq \int_\R \|f\|_{\infty}^{2}dF^{*(n+1)}(y)-f^{2}(x)\\
+      &\leq \|f\|_{\infty}^2\cdot 1 +0\\
+      &=C^2.
+    \end{align*}
+    
+    \item[\textbf{Parte 2}] Demostramos que $H_n(x)\leq H_{n+1}(x)$ para cualquier $x\in \R$.
+    En efecto, sea $x\in \R$ y nótese que 
+    \begin{align*}
+      H_{n}(x)=\int H_0(x+y)dF^{*n}(y)&=\int \left(\int \left(f(x+y+z)-f(x+y)\right)^2dF(z)\right)dF^{*n}(y)\\
+      &=\int \left(\int \left(\int f(x+y+z+w)-f(x+y+w)dF(w)\right)^2dF(z)\right)dF^{*n}(y)\\
+      &\leq \int \left(\int \left(\int (f(x+y+z+w)-f(x+y+w))^2dF(w)\right)dF(z)\right)dF^{*n}(y)\\
+      &=\int \left(\int \left(\int (f(x+y+w+z)-f(x+y+w))^2dF(z)\right)dF(w)\right)dF^{*n}(y)\\
+      &=\int \left(\int H_0(x+y+w)dF(w)\right)dF^{*n}(y)\\
+      &=\int H_0(x+y)dF^{*(n+1)}(y)\\
+      &=H_{n+1}(x),
+    \end{align*}
+    en donde en la tercera igualdad usamos la propiedad de $f$, en la desigualdad utilizamos Jensen, y en la cuarta igualdad utilizamos Tonelli. El resto de igualdades se dan por definición de $H_k$ y de la convolución de funciones de distribución $F$.\\
+
+    Se sigue que $H_n$ es una sucesión creciente en $n$ para cualquier $x\in \R$.
+    \item[\textbf{Parte 3}] Demostramos que $H_0(x)=0$ para cualquier $x\in \R$. Para ello nótese que, a ser $H_0$ la integral de una función no negativa, $0\leq H_0(x)$ para cualquier $x\in \R$. Con ello, para cualquier $k\geq1$, 
+    \[
+    H_k(x)=\int H_0(x+y)dF^{*n}(y)\geq0, \qquad  x\in \R.   
+    \]
+    Por lo tanto, $S_n(x)=\displaystyle\sum_{k=0}^{n}H_k(x)$ es una suma de términos no negativos, y en consecuencia $S_n$ es una sucesión de positivos no decreciente. Dado que para cualquier $n\geq1$, $S_n(x)\leq \|f\|_{\infty}^2$ según lo visto en el primer inciso, la sucesión $S_n$ es acotada superiormente. Así, 
+    \[
+    \sum_{k=0}^{\infty}H_k(x)=\lim_{n\to \infty}S_n(x)\leq \|f\|_{\infty}^2,  
+    \]
+    esto es, la serie de las $H_k$ converge. Lo anterior para cualquier $x\in \R$. En particular, la sucesión de los términos debe tener límite igual a 0. Por lo tanto, al ser $H_n$ una sucesión no decreciente,
+    \[
+    0\leq H_0(x)\leq\lim_{n\to \infty}H_n(x)=0, \qquad \forall x \in \R.  
+    \]
+    Por lo que al ser $H_0(x)$ independiente de $n$, se tiene que $H_0(x)=0$ para cualquier $x \in \R$.
+    \item[\textbf{Parte 4}] Deducimos que para cualquier $x\in \R, y\in Supp(F)$, $f(x+y)-f(x)=0$. Procedemos por contradicción. Supongamos que existen dos puntos $x_0\in \R$ y $y_0\in Supp(F)$ tales que $f(x_0+y_0)-f(x_0)\neq 0$.\\
+    
+    Dado que $f$ es continua, para $x_0\in \R$ fijo, la función $g(y)=\left(f(x_0+y)-f(x_0)\right)^2$ también es continua. En particular nuestra suposición se traduce en que en el punto $y_0$, se tiene que $g(y_0)>0$. Por ser $g$ continua, existe un abierto $(a,b)\subseteq \R$ tal que $y_0\in (a,b)$ y $g(y)>0$ para cualquier punto $y\in (a,b)$.\\
+    
+    Por otro lado, dado que $y\in Supp(F)$, el cual por definición es un conjunto cerrado, se tiene que $(a,b)\cap Supp(F)\neq \varnothing$. De hecho, si $\mu_F$ es la medida que induce la función de distribución $F$, se tiene que $\mu_F((a,b))>0$. Esto ocurre, ya que si $\mu_F((a,b))=0$, entonces $\mu_F(\R\setminus (a,b))=1$.\\
+    
+    Pero entonces por definición del soporte, $Supp(F)\subseteq \R\setminus (a,b)$, y por lo tanto $y_0\not \in Supp(F)$, lo cual no puede suceder.\\
+
+    Por lo tanto, $g$ es una función que en el conjunto $(a,b)$, toma valores positivos, y $\mu_F((a,b))>0$. Se sigue de la parte 3 que 
+    \[
+    0=H_0(x_0)=\int_\R \left(f(x_0+y)-f(x_0)\right)^2 dF(y)\geq\int_{(a,b)}\left(f(x_0+y)-f(x_0)\right)^2dF(y)\geq \int_{(a,b)}g(y)dF(y)>0,   
+    \]
+    ya que una función medible con valores positivos en un conjunto $A$ medible de medida positiva tiene integral positiva sobre dicho conjunto. Pero lo anterior es una contradicción.\\
+
+    Se deduce que no pueden existir dichos elementos $x_0\in \R$, $y_0\in Supp(F)$. Por lo tanto, $f(x+y)=f(x)$ para cualesquiera $x\in \R$, $y\in Supp(F)$, y con ello, $f$ es constante.
+   \end{enumerate} 
+  
+  \end{proof}
+\end{document}
