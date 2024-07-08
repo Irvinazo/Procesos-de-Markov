@@ -1,0 +1,181 @@
+\documentclass[letterpaper]{article} 
+\usepackage[left = 0.5in, right = 0.5in, top = 0.9in, bottom = 0.9in]{geometry}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{tikz-cd}
+\usepackage{mathrsfs}
+\usepackage[bbgreekl]{mathbbol}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\graphicspath{{img/}}
+
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\G}{\mathcal{G}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\inv}{^{-1}}
+\renewcommand{\to}{\rightarrow}
+\newcommand{\ent}{\Longrightarrow}
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\1}{\mathds{1}}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\theoremstyle{definition}
+\newtheorem{dfn}{Definición}
+\theoremstyle{definition}
+\newtheorem{teo}{Teorema}
+\theoremstyle{definition}
+\newtheorem{cor}{Corolario}
+\theoremstyle{definition}
+\newtheorem{prop}{Proposición}
+\theoremstyle{definition}
+\newtheorem{obs}{Observación}
+
+
+\title{\textbf{Procesos de Markov}}
+\author{Iván Irving Rosas Domínguez}
+\date{\today}
+
+\DeclareSymbolFontAlphabet{\mathbbm}{bbold}
+\DeclareSymbolFontAlphabet{\mathbb}{AMSb}
+\DeclareMathSymbol\bbDelta  \mathord{bbold}{"01}
+
+\begin{document}
+\maketitle
+
+%\begin{abstract}
+%\end{abstract}
+\begin{center}
+    \Large{\textbf{Ejercicios del examen}}
+\end{center}
+\begin{enumerate}
+    \item[\textbf{1.}] Sea $\xi$ el número de descendientes de un individuo arbitrario y denotemos por $\zeta_1,...,\zeta_\xi$ a sus posiciones en la recta real, las cuales vamos a considerar independientes. Definamos a la medida aleatoria 
+    \[
+        \mathcal{Z}(A)=\sum_{i=1}^{\xi} \delta_{\zeta_i}(A), \qquad \text{para } A\in \B(\R).
+    \]
+    Para funciones $f:\R\to \R$, vamos a definir 
+    \[
+    \langle f,\mathcal{Z}\rangle=\sum_{i=1}^{\xi}f(\zeta_i),
+    \]
+    siempre y cuando el lado derecho esté bien definido.
+
+    Vamos a definir a la caminata aleatoria ramificante como sigue: vamos a iniciar con un número arbitrario (pero determinista) de individuos situado en el origen de la recta real. Cada uno de dichos individuos genera descendientes de acuerdo a la ley del proceso puntual $\mathcal{Z}$ descrito anteriormente. Cada uno de estos individuos conforman la primera generación y cada uno de ellos generan nuevos individuos cuyas posiciones son determinadas de acuerdo a la ley del mismo proceso puntual $\mathcal{Z}$ considerando la posición de su ancestro directo, y así sucesivamente. Como en el caso del proceso de Galton-Watson vamos a asumir que cada individuo se reproduce de manera independiente. En otras palabras, la caminata aleatoria ramificante es una sucesión de medidas indexadas por generación $\{\mathcal{Z}_n(\cdot):n\geq0\}$, donde 
+    \[
+        \mathcal{Z}_n(A)=\sum_{i=1}^{Z_n}\delta_{\zeta_i^{(n)}}(A), \qquad A\in \B(\R),
+    \]
+    donde $Z_n=\mathcal{Z}_n(\R)$, el número de individuos en la n-ésima generación y $\{\zeta_1^{(n)},...,\zeta_{Z_n}^{(n)}\}$ sus posiciones en la recta real.
+    \begin{enumerate}
+        \item Mostrar que para $n\geq0$, 
+        \[
+            \mathcal{Z}_{n+1}(A)=\sum_{i=1}^{Z_n}\mathcal{Z}^{(i)}(A-\zeta_i^{(n)}), \qquad A\in \B(\R),
+        \]
+        donde $\mathcal{Z}^{(i)}$, $i=1,...,Z_n$ son copias i.i.d. de $\mathcal{Z}$ y para cada real $x$, el conjunto $A-x=\{y\in \R: y+x\in A\}$.
+        \item Muestre que es un proceso de Markov.
+        \item Ahora definamos 
+        \[
+            m(\theta)=\E_{\delta_0}\left[\langle e^{-\theta\cdot},\mathcal{Z}\rangle\right]=\E_{\delta_0}\left[\sum_{i=1}^{\xi}e^{-\theta\zeta_i}\right], \qquad \theta\in\R,
+        \]
+        donde $\P_{\delta_0}$, denota la ley de $\{\mathfrak{Z_n:n\geq0}\}$ empezando con un solo individuo en el origen. Mostrar que para toda $\theta\in \R$ tal que $m(\theta)<\infty$, el proceso 
+        \[
+        W_n(\theta)=\frac{\langle e^{-\theta\cdot},\mathcal{Z}_n\rangle}{m(\theta)^n}=\sum_{i=1}^{Z_n}\frac{e^{-\theta\zeta_i^{(n)}}}{m(\theta)^n}, \qquad n\geq0,
+        \]
+        es una martingala.
+    \end{enumerate}
+    \item[\textbf{2.}] Sea $M$ una medida aleatoria definida en el espacio medible $(E,\mathcal{E})$, tal que para toda sucesión de conjuntos medibles $(B_i)_{i\geq1}$ disjuntos dos a dos se tiene 
+    \[
+        M \left(\bigcup_{i=1}^\infty B_i\right)=\sum_{i=1}^{\infty}M(B_i).
+    \]
+    \begin{enumerate}
+        \item Supongamos que existe una medida en $(E,\mathcal{E})$ tal que $0<\mu(E)<\infty$ y que para toda $f:E\to \R_+$ medible se cumple 
+        \[
+            \E\left[\exp \left\{-\langle M,f\rangle\right\}\right]=\exp \left\{-\int_E(1-e^{-f(x)})\mu(dx)\right\},
+        \]
+        donde 
+        \[
+            \langle M,f\rangle:=\int_E f(x)M(dx).
+        \]
+        Probar que $M$ es una medida aleatoria de Poisson (\textbf{Ayuda:} Considerar a $f$ como una función escalonada.)
+        \item Supongamos que existe una medida en $(E,\mathcal{E})$ tal que $0<\mu(E)<\infty$, y consideremos a 
+        \[
+            M(dx):=\sum_{i=1}^{N}\delta_{\xi_i}(dx),
+        \]
+        donde $(\xi_i)_{i\geq1}$ es una sucesión de v.a.i.i.d. con ley común $\mu(\cdot)/\mu(E)$ y $N$ una v.a. con distribución Poisson de parámetro $\mu(E)$ independiente de $(\xi_i)_{i\geq1}$. Además sean $r:E\to \R_+$ una función medible y $(\varepsilon_i)_{i\geq1}$ una sucesión de v.a.i.i.d. con ley común exponencial estándar e independiente de $(\xi_i)_{i\geq1}$ y $N$. Vamos a definir a 
+        \[
+            \widetilde{M}(dx):=\sum_{i=1}^{N}\1_{r(\xi_i)<\varepsilon}delta_{\xi_i}\delta(\xi_i)(dx).
+        \] 
+        Probar que $\widetilde{M}$ es una medida aleatoria de Poisson y determinar su intensidad. (\textbf{Ayuda:} Utilice la parte anterior.)
+        \item Sean $M$ y $\widetilde{M}$ como en la parte anterior y definamos 
+        \[
+            D:=\exp \left\{-\langle M,r\rangle+\int_E \left(1-e^{-r(x)}\right)\mu(dx)\right\}.
+        \]
+        Probar que d$\widetilde{\P}$=$D\ \cdot$ d$\P$, es una densidad de probabilidad y que la ley de $M$ bajo $\widetilde{\P}$ es la misma que la de $\widetilde{M}$ bajo $\P$.
+    \end{enumerate}
+    \item[\textbf{3.}] Sea $\sigma=(\sigma_t:t\geq0)$ un subordinador. Recordemos que en particular tenemos que 
+    \[
+        \Psi(q)=-\log \E\left[e^{-\theta\sigma_1}\right]=\delta q+\int_{0}^{\infty}(1-e^{-qx})\Pi(dx),
+    \]
+    donde $\delta\geq0$ y 
+    \[
+        \int_{(0,\infty)}(1\wedge x)\Pi(dx)<\infty.
+    \]
+    Definamos para cada $q\geq0$, la medida $q$-potencial en $[0,\infty)$ como sigue
+    \[
+        U^(q)(dx)=\E\left[\int_{0}^{\infty}e^{-qt}\1_{\sigma_t\in dx}dt\right].
+    \]
+    Sea $F=U^{(1)}$ y sea $V$ la medida de renovación asociada a la distribución $F$.
+    \begin{enumerate}
+        \item Determinar la relación entre las medidas $V(dx)$ y $U^{(0)}(dx)$.
+        \item Supongamos que $\mu=\E\left[\sigma_1\right]\in (0,\infty)$.
+        \begin{enumerate}
+            \item Si $U^{(0)}$ es no aritmética, mostrar que para toda $y>0$, 
+            \[
+                \lim_{x\to\infty}U^{(0)}(x+y)-U^{(0)}(x)=\frac{y}{x}.
+            \]
+            \item Mostrar que 
+            \[
+                \lim_{x\to\infty}\frac{U^{(0)}(x)}{x}=\frac{1}{\mu}.
+            \]
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+\begin{center}
+    \Large{\textbf{Ejercicios de la tarea}}
+\end{center}
+\begin{enumerate}
+    \item[\textbf{38.}] 
+    \item[\textbf{39.}] Supongamos que $\xi$ es una v.a. que toma valores en $\N$ y que $\E\left[\xi\right]<\infty$ (en otras palabras $\xi$ es aritmética de paso 1). Sean $(\xi_i)_{i\geq1}$ una sucesión de v.a.i.i.d. de ley común $\xi$ y $T_n= \xi_1+...+\xi_n$. Además consideremos a una función $f:\N\to\N$ y definamos a $\Sigma:=\sum_{n=1}^{\infty}f(T_n)$.
+    \begin{enumerate}
+        \item Probar que $\Sigma\in L^1(\P)$ si y solamente si $\sum_{n=1}^\infty f(n)<\infty$.
+        \item Sean $\overline{F}(x)=\P(\xi>x)$ y $g:\N\to \R_+$. Probar que 
+        \[
+            \E\left[\text{card}\left\{n\geq1: \xi_{n+1}>g(T_n)\right\}\right]<\infty \quad \text{ si y solamente si }\quad \sum_{n=1}^\infty\overline{F}(g(n))<\infty.
+        \]
+    \end{enumerate}
+    \item[\textbf{42.}] Sean $E, F$ dos espacios medibles, $\phi:E\to F$ una biyección medible y $(X_t:t\geq0)$ un proceso de Markov con respecto a su filtración canónica, que toma valores en $E$ y con semigrupo $(P_t)_{t\geq0}$. Probar que $Y_t=\phi(X_t)$, para $t\geq0$, es un proceso de Markov y determinar su semigrupo.
+    \item[\textbf{44.}] Sea $X$ un proceso de Feller. Probar que para toda función boreliana y acotada, la integral 
+    \[
+        \int_{0}^{t}f(X_s)ds,
+    \]
+    es una variable aleatoria $(\F_t)$-medible. Además supongamos que $f\geq0$ y denotemos por 
+    \[
+    Uf(x)=\E_x\left[\int_{0}^{\infty}f(X_s)ds\right],
+    \]
+    probar que si $A:=supp(f)$, entonces 
+    \[
+    Uf(x)=\int_AUf(y)\P_x(X_s\in dy,T_A<\infty),
+    \]
+    donde $T_A=\inf\{t:X_t\in A\}$.
+    \item[\textbf{46.}] Probar que $\mathcal{G}$ es un operador cerrado, i.e. si $(f_n)_{n\geq1}\in \mathcal{D}$ tal que converge en $C_0$ y $\mathcal{G}f_n\to g$ en $C_0$ entonces existe $f\in \mathcal{D}$ tal que $\mathcal{G}f=g$.
+\end{enumerate}
+\end{document}
